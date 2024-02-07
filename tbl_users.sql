@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2023 at 10:06 PM
+-- Generation Time: Feb 07, 2024 at 07:54 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `user_tbl`
+-- Database: `web_db`
 --
 
 -- --------------------------------------------------------
@@ -31,18 +31,16 @@ CREATE TABLE `tbl_users` (
   `user_id` int(5) NOT NULL,
   `name` text NOT NULL,
   `email` varchar(20) NOT NULL,
-  `password` varchar(10) NOT NULL
+  `password` varchar(10) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`user_id`, `name`, `email`, `password`) VALUES
-(1, 'jhon doe', 'jhondoe@email.com', '12345'),
-(2, 'marie', 'mariedoe@email.com', '12345'),
-(5, 'dsfsd', 'dsf', 'fsdfsd'),
-(555, 'rony', 'rony@mangerpola', '123123');
+INSERT INTO `tbl_users` (`user_id`, `name`, `email`, `password`, `created_at`) VALUES
+(23135, 'PROSONJEET DAS', 'd', 'SADFDSF', '2024-02-08 00:49:37');
 
 --
 -- Indexes for dumped tables
@@ -62,7 +60,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=556;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23136;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

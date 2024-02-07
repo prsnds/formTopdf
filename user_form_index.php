@@ -1,11 +1,13 @@
 <?php 
+session_start();
 include "db/connection.php";
-    if(isset($_POST['submit'])){
+    if(isset($_session['submit'])){
         
-        $user_id=$_POST['user_id'];
-        $name=$_POST['name'];
-        $email=$_POST['email'];
-        $password=$_POST['password'];
+        $user_id=$_session['user_id'];
+        $name=$_session['name'];
+        $email=$_session['email'];
+        $password=$_session['password'];
+       
 
    $query1 = "INSERT INTO tbl_users (`user_id`, `name`, `email`, `password`) VALUES ('$user_id','$name','$email','$password')";  
    $inserted = mysqli_query($conn,$query1);
@@ -33,7 +35,7 @@ include "db/connection.php";
 </head>
 
 <body>
-    <form action="index.php" method="post">
+    <form action="user_form_index.php" method="post">
         <div class="id">
             id:<input type="text" name="user_id">
         </div>
@@ -62,19 +64,25 @@ include "db/connection.php";
          <th>name</th>
          <th>email</th>
          <th>password</th>
+         <th>created time</th>
      </tr>
          <?php
-
-                   while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
-                 {
-                  
-                     echo "<tr>";
-                     echo "<td>".$row['user_id']."</td>";
-                     echo "<td>".$row['name']."</td>";
-                     echo "<td>".$row['email']."</td>";
-                     echo "<td>".$row['password']."</td>";
-                     echo "</tr>";
-                 }
+            try {
+                while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+              {
+               
+                  echo "<tr>";
+                  echo "<td>".$row['user_id']."</td>";
+                  echo "<td>".$row['name']."</td>";
+                  echo "<td>".$row['email']."</td>";
+                  echo "<td>".$row['password']."</td>";
+                  echo "<td>".$row['created_at']."</td>";
+                  echo "</tr>";
+              }
+               
+            } catch (\Throwable $th) {
+                echo "there is no data";
+            }
                 
                 
         ?>
